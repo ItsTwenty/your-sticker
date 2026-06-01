@@ -15,13 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = open ? 'hidden' : '';
         });
 
-        nav.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', () => {
-                nav.classList.remove('active');
-                mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                document.body.style.overflow = '';
-            });
+        nav.addEventListener('click', (e) => {
+            if (e.target === nav || e.target === nav.querySelector('ul')) {
+                closeMenu();
+            }
         });
+
+        nav.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', closeMenu);
+        });
+
+        function closeMenu() {
+            nav.classList.remove('active');
+            mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = '';
+        }
     }
 
     // ── SCROLL REVEAL ANIMATIONS ──

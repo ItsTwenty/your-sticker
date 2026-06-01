@@ -623,7 +623,7 @@ nav a:hover { color: #FFFFFF; background: rgba(255,255,255,0.1); }
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2px;          /* tight grid — editorial */
+    gap: 2px;
     border: 1px solid var(--gray-2);
 }
 
@@ -1628,6 +1628,23 @@ footer {
     }
 
     nav#mainNav a:hover { color: var(--yellow); }
+
+    nav#mainNav .nav-cta {
+        margin-left: 0;
+        background: transparent !important;
+        color: var(--white) !important;
+        padding: 14px 24px !important;
+    }
+
+    nav#mainNav .nav-cta:hover {
+        background: transparent !important;
+        color: var(--yellow) !important;
+    }
+
+    .categories-grid,
+    .steps-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     .footer-grid { grid-template-columns: 1fr; gap: 28px; }
     .form-row { grid-template-columns: 1fr; }
