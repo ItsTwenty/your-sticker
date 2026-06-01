@@ -4,16 +4,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Sticker — Autocollants Premium · Maroc</title>
+
+    <!-- Primary Meta Tags -->
+    <title>Your Sticker — Stickers Personnalisés Premium au Maroc</title>
+    <meta name="title" content="Your Sticker — Stickers Personnalisés Premium au Maroc">
     <meta name="description"
-        content="Stickers personnalisés de haute qualité au Maroc. Vinyle, holographique, transparent. Livraison 2–3 jours.">
+        content="Commandez vos stickers personnalisés de haute qualité au Maroc. Vinyle durable, holographique, transparent. Impression HD et livraison rapide en 2–3 jours partout au Maroc.">
+    <meta name="keywords"
+        content="stickers maroc, autocollants personnalisés, impression stickers, vinyle, holographique, stickers personnalisés casablanca, your sticker maroc">
+    <meta name="author" content="Your Sticker">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yoursticker.ma/">
+    <meta property="og:title" content="Your Sticker — Stickers Personnalisés Premium au Maroc">
+    <meta property="og:description"
+        content="Impression de stickers personnalisés premium. Vinyle, holographique, transparent. Livraison rapide partout au Maroc.">
+    <meta property="og:image" content="https://yoursticker.ma/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yoursticker.ma/">
+    <meta property="twitter:title" content="Your Sticker — Stickers Personnalisés Premium au Maroc">
+    <meta property="twitter:description"
+        content="Impression de stickers personnalisés premium. Vinyle, holographique, transparent. Livraison rapide partout au Maroc.">
+    <meta property="twitter:image" content="https://yoursticker.ma/logo.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yoursticker.ma/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="src/images/image21.png">
+    <link rel="apple-touch-icon" href="src/images/image21.png">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;0,900;1,900&display=swap"
         rel="stylesheet">
+
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Products Data -->
+    <script src="products.js"></script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Your Sticker Maroc",
+      "image": "https://yoursticker.ma/logo.png",
+      "@id": "https://yoursticker.ma/",
+      "url": "https://yoursticker.ma/",
+      "telephone": "+212 600000000",
+      "priceRange": "DH",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Maroc",
+        "addressLocality": "Casablanca",
+        "addressCountry": "MA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 33.5731,
+        "longitude": -7.5898
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "09:00",
+        "closes": "20:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/yoursticker.ma",
+        "https://www.instagram.com/yoursticker.ma"
+      ]
+    }
+    </script>
 </head>
 
 <body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <span class="preloader-mark">✦</span>
+            <div class="preloader-text">
+                <span class="preloader-top">Your</span>
+                <span class="preloader-bottom">Sticker</span>
+            </div>
+            <div class="preloader-bar">
+                <div class="preloader-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- ═══════════════════════════
          HEADER
@@ -29,16 +128,6 @@
                 </span>
             </a>
 
-                <div class="header-actions" style="display: flex; align-items: center;">
-                    <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">
-                        <i class="fas fa-sun"></i>
-                    </button>
-
-                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-
             <nav id="mainNav">
                 <ul>
                     <li><a href="#home">Accueil</a></li>
@@ -46,9 +135,20 @@
                     <li><a href="#custom">Process</a></li>
                     <li><a href="#categories">Matériaux</a></li>
                     <li><a href="#about">À propos</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contact" class="nav-cta">Commander →</a></li>
                 </ul>
             </nav>
+
+            <div class="header-icons">
+                <a href="#" class="cart-btn" aria-label="Panier">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -78,16 +178,16 @@
             <div class="hero-center-main">
                 <div class="hero-sticker-group">
                     <div class="hero-sticker s1">
-                        <img src="7b376c953d7d6e150c3aaf0194e2a292-removebg-preview.png" alt="Sticker 1">
+                        <img src="src/images/image1.png" alt="Sticker personnalisé Maroc - Design 1">
                     </div>
                     <div class="hero-sticker s2">
-                        <img src="6e6baf7dddd227bb7002c797b48f9216-removebg-preview.png" alt="Sticker 2">
+                        <img src="src/images/image2.png" alt="Sticker vinyle premium Maroc - Design 2">
                     </div>
                     <div class="hero-sticker s3">
-                        <img src="24f7d6d90f6a0f7ee5a2b9e978d99dfc-removebg-preview.png" alt="Sticker 3">
+                        <img src="src/images/image3.png" alt="Sticker holographique personnalisé - Design 3">
                     </div>
                     <div class="hero-sticker s4">
-                        <img src="822aa782444994485dcc9312ad123857-removebg-preview.png" alt="Sticker 4">
+                        <img src="src/images/image4.png" alt="Sticker autocollant sur mesure - Design 4">
                     </div>
                 </div>
 
@@ -117,23 +217,32 @@
     ═══════════════════════════ -->
     <div class="marquee-section">
         <div class="marquee-track">
-            <div class="marquee-item">Vinyle Durable <span class="marquee-sep">✦</span></div>
+            <div class="marquee-item">Nadi Canadien <span class="marquee-sep">✦</span></div>
             <div class="marquee-item">Holographique <span class="marquee-sep">✦</span></div>
-            <div class="marquee-item">Transparent <span class="marquee-sep">✦</span></div>
+            <div class="marquee-item">Lss9 f'Ay Blassa <span class="marquee-sep">✦</span></div>
             <div class="marquee-item">Waterproof <span class="marquee-sep">✦</span></div>
-            <div class="marquee-item">Livraison Maroc <span class="marquee-sep">✦</span></div>
+            <div class="marquee-item">Zidha f'PC <span class="marquee-sep">✦</span></div>
             <div class="marquee-item">Impression HD <span class="marquee-sep">✦</span></div>
-            <div class="marquee-item">UV Resistant <span class="marquee-sep">✦</span></div>
-            <div class="marquee-item">Formes Libres <span class="marquee-sep">✦</span></div>
+            <div class="marquee-item">Anti-Chrilla (UV) <span class="marquee-sep">✦</span></div>
+            <div class="marquee-item">Meme Culture <span class="marquee-sep">✦</span></div>
             <!-- duplicate -->
-            <div class="marquee-item">Vinyle Durable <span class="marquee-sep">✦</span></div>
+            <div class="marquee-item">Nadi Canadien <span class="marquee-sep">✦</span></div>
             <div class="marquee-item">Holographique <span class="marquee-sep">✦</span></div>
-            <div class="marquee-item">Transparent <span class="marquee-sep">✦</span></div>
+            <div class="marquee-item">Lss9 f'Ay Blassa <span class="marquee-sep">✦</span></div>
             <div class="marquee-item">Waterproof <span class="marquee-sep">✦</span></div>
-            <div class="marquee-item">Livraison Maroc <span class="marquee-sep">✦</span></div>
+            <div class="marquee-item">Zidha f'PC <span class="marquee-sep">✦</span></div>
             <div class="marquee-item">Impression HD <span class="marquee-sep">✦</span></div>
-            <div class="marquee-item">UV Resistant <span class="marquee-sep">✦</span></div>
-            <div class="marquee-item">Formes Libres <span class="marquee-sep">✦</span></div>
+            <div class="marquee-item">Anti-Chrilla (UV) <span class="marquee-sep">✦</span></div>
+            <div class="marquee-item">Meme Culture <span class="marquee-sep">✦</span></div>
+        </div>
+    </div>
+
+    <!-- Promo Banner -->
+    <div class="promo-banner" id="promoBanner">
+        <div class="promo-inner">
+            <p>🎉 <strong>-10% sur votre première commande</strong> — Code : <span class="promo-code">BIENVENUE10</span>
+            </p>
+            <button class="promo-close" id="promoClose" aria-label="Fermer">×</button>
         </div>
     </div>
 
@@ -144,117 +253,18 @@
     <section class="products" id="products">
         <div class="container">
             <div class="section-title-wrap reveal">
-                <div class="eyebrow" style="justify-content:center;">Boutique</div>
+                <div class="eyebrow" style="justify-content:center;">Zid f'Stocker</div>
                 <h2 class="section-title">
-                    Packs <span class="title-accent">Populaires</span>
+                    Packs <span class="title-accent">Nadyin</span>
                     <span class="underline-draw"></span>
                 </h2>
-                <p class="section-sub">Des packs prêts à commander — ou personnalisez le vôtre.</p>
+                <p class="section-sub">Des packs parfaits prêts à commander — ou lss9 la vibe dyalek.</p>
             </div>
 
-            <div class="sy-grid">
-
-                <div class="sy-card reveal reveal-delay-1">
-                    <div class="sy-img-box">
-                        <img src="jjs.jpg" alt="Die-Cut Stickers">
-                    </div>
-                    <div class="sy-info">
-                        <div class="sy-rating">★★★★★ <span>(129)</span></div>
-                        <h3 class="sy-title">Stickers jujutsu kaisen</h3>
-                        <p class="sy-desc">Découpe personnalisée parfaite pour votre logo ou design, suivant vos
-                            contours.</p>
-                        <a href="#contact" class="sy-btn">Créer Maintenant</a>
-                    </div>
-                </div>
-
-                <div class="sy-card reveal reveal-delay-2">
-                    <div class="sy-img-box">
-                        <img src="456bb19cff5ad25ac7a7e6ef41c135b0.jpg" alt="Kiss-Cut Stickers">
-                    </div>
-                    <div class="sy-info">
-                        <div class="sy-rating">★★★★★ <span>(84)</span></div>
-                        <h3 class="sy-title">Stickers Motorsports</h3>
-                        <p class="sy-desc">Plusieurs designs sur une même page. Faciles à décoller grâce à la coupe
-                            mi-chair.</p>
-                        <a href="#contact" class="sy-btn">Créer Maintenant</a>
-                    </div>
-                </div>
-
-                <div class="sy-card reveal reveal-delay-3">
-                    <div class="sy-img-box">
-                        <img src="983b5174e68e11b2b2bedfb099bfdd21.jpg" alt="Clear Stickers">
-                    </div>
-                    <div class="sy-info">
-                        <div class="sy-rating">★★★★★ <span>(56)</span></div>
-                        <h3 class="sy-title">Stickers aesthetics</h3>
-                        <p class="sy-desc">Impression sur vinyle transparent pour un effet intégré sur les vitres ou
-                            emballages.</p>
-                        <a href="#contact" class="sy-btn">Créer Maintenant</a>
-                    </div>
-                </div>
-
-                <div class="sy-card reveal reveal-delay-4">
-                    <div class="sy-img-box">
-                        <img src="b09be36b777195d5c9e1775b8753e05f.jpg" alt="Holographic Stickers">
-                    </div>
-                    <div class="sy-info">
-                        <div class="sy-rating">★★★★★ <span>(108)</span></div>
-                        <h3 class="sy-title">Stickers Adidas</h3>
-                        <p class="sy-desc">Finition iridescente premium qui capture la lumière. Parfait pour se faire
-                            remarquer.</p>
-                        <a href="#contact" class="sy-btn">Créer Maintenant</a>
-                    </div>
-                </div>
-
-                <div class="sy-card reveal reveal-delay-1">
-                    <div class="sy-img-box">
-                        <img src="naruto_pack.png" alt="Naruto Pack">
-                    </div>
-                    <div class="sy-info">
-                        <div class="sy-rating">★★★★★ <span>(152)</span></div>
-                        <h3 class="sy-title">Stickers Naruto Pack</h3>
-                        <p class="sy-desc">Collection premium des ninjas de Konoha. Vinyle durable et haute définition.</p>
-                        <a href="#contact" class="sy-btn">Créer Maintenant</a>
-                    </div>
-                </div>
-
-                <div class="sy-card reveal reveal-delay-2">
-                    <div class="sy-img-box">
-                        <img src="cyberpunk_pack.png" alt="Cyberpunk Pack">
-                    </div>
-                    <div class="sy-info">
-                        <div class="sy-rating">★★★★★ <span>(94)</span></div>
-                        <h3 class="sy-title">Stickers Cyberpunk</h3>
-                        <p class="sy-desc">Esthétique néon et futuriste. Effet holographique recommandé pour un look tech.</p>
-                        <a href="#contact" class="sy-btn">Créer Maintenant</a>
-                    </div>
-                </div>
-
-                <div class="sy-card reveal reveal-delay-3">
-                    <div class="sy-img-box">
-                        <img src="moroccan_pack.png" alt="Moroccan Pack">
-                    </div>
-                    <div class="sy-info">
-                        <div class="sy-rating">★★★★★ <span>(210)</span></div>
-                        <h3 class="sy-title">Stickers Maroc Culture</h3>
-                        <p class="sy-desc">Calligraphie moderne et symboles du Maroc. Le mélange parfait de tradition et design.</p>
-                        <a href="#contact" class="sy-btn">Créer Maintenant</a>
-                    </div>
-                </div>
-
-                <div class="sy-card reveal reveal-delay-4">
-                    <div class="sy-img-box">
-                        <img src="retro_pack.png" alt="Retro Gaming Pack">
-                    </div>
-                    <div class="sy-info">
-                        <div class="sy-rating">★★★★★ <span>(118)</span></div>
-                        <h3 class="sy-title">Stickers Retro Gaming</h3>
-                        <p class="sy-desc">Pixel art et consoles classiques. Pour les nostalgiques de l'âge d'or du jeu vidéo.</p>
-                        <a href="#contact" class="sy-btn">Créer Maintenant</a>
-                    </div>
-                </div>
-
+            <div class="sy-grid" id="productsGrid">
+                <!-- Data will be loaded here -->
             </div>
+
         </div>
     </section>
 
@@ -265,17 +275,18 @@
     <section class="pers-section" id="personnalise">
         <div class="container">
             <div class="section-title-wrap reveal">
-                <div class="eyebrow" style="justify-content:center;">Sur Mesure</div>
+                <div class="eyebrow" style="justify-content:center;">À la carte</div>
                 <h2 class="section-title">
                     Stickers <span class="title-accent">Personnalisé</span>
                     <span class="underline-draw"></span>
                 </h2>
-                <p class="section-sub">Choisissez la forme qui correspond à votre vision. Impression haute qualité, livraison rapide au Maroc.</p>
+                <p class="section-sub">Khtar la forme li bghiti m3a l'vibe dyalek. Impression Nadya, livraison express
+                    f'lmaghrib kaml.</p>
             </div>
 
             <div class="pers-grid">
 
-                <a href="#contact" class="pers-card reveal reveal-delay-1">
+                <div class="pers-card reveal reveal-delay-1">
                     <div class="pers-img-wrap">
                         <div class="pers-shape-preview round-sticker">
                             <div class="pers-shape-inner">
@@ -288,9 +299,9 @@
                     </div>
                     <h4 class="pers-name">Ronds Stickers</h4>
                     <p class="pers-price">69.00 dh</p>
-                </a>
+                </div>
 
-                <a href="#contact" class="pers-card reveal reveal-delay-2">
+                <div class="pers-card reveal reveal-delay-2">
                     <div class="pers-img-wrap">
                         <div class="pers-shape-preview square-sticker">
                             <div class="pers-shape-inner">
@@ -303,9 +314,9 @@
                     </div>
                     <h4 class="pers-name">Stickers Carrés</h4>
                     <p class="pers-price">69.00 dh</p>
-                </a>
+                </div>
 
-                <a href="#contact" class="pers-card reveal reveal-delay-3">
+                <div class="pers-card reveal reveal-delay-3">
                     <div class="pers-img-wrap">
                         <div class="pers-shape-preview free-sticker">
                             <div class="pers-shape-inner">
@@ -318,9 +329,9 @@
                     </div>
                     <h4 class="pers-name">Forme Libre Stickers</h4>
                     <p class="pers-price">69.00 dh</p>
-                </a>
+                </div>
 
-                <a href="#contact" class="pers-card reveal reveal-delay-4">
+                <div class="pers-card reveal reveal-delay-4">
                     <div class="pers-img-wrap">
                         <div class="pers-shape-preview transparent-sticker">
                             <div class="pers-shape-inner">
@@ -333,9 +344,9 @@
                     </div>
                     <h4 class="pers-name">Stickers Transparent</h4>
                     <p class="pers-price">69.00 dh</p>
-                </a>
+                </div>
 
-                <a href="#contact" class="pers-card reveal reveal-delay-1">
+                <div class="pers-card reveal reveal-delay-1">
                     <div class="pers-img-wrap">
                         <div class="pers-shape-preview planche-sticker">
                             <div class="pers-shape-inner planche-dots">
@@ -346,9 +357,9 @@
                     </div>
                     <h4 class="pers-name">Planches de Stickers</h4>
                     <p class="pers-price">59.00 dh</p>
-                </a>
+                </div>
 
-                <a href="#contact" class="pers-card reveal reveal-delay-2">
+                <div class="pers-card reveal reveal-delay-2">
                     <div class="pers-img-wrap">
                         <div class="pers-shape-preview uv-sticker">
                             <div class="pers-shape-inner">
@@ -361,7 +372,7 @@
                     </div>
                     <h4 class="pers-name">3D UV Stickers</h4>
                     <p class="pers-price">89.00 dh</p>
-                </a>
+                </div>
 
             </div>
         </div>
@@ -376,10 +387,10 @@
             <div class="section-title-wrap reveal">
                 <div class="eyebrow" style="justify-content:center;">Processus</div>
                 <h2 class="section-title">
-                    Comment <span class="title-accent">Ça Marche ?</span>
+                    Kifach <span class="title-accent">Nkhdmou ?</span>
                     <span class="underline-draw"></span>
                 </h2>
-                <p class="section-sub">De l'idée à votre boîte aux lettres en 4 étapes claires.</p>
+                <p class="section-sub">Men l'idée l'bab dar f'4 étapes claires.</p>
             </div>
 
             <div class="steps-container">
@@ -421,16 +432,19 @@
                 </p>
                 <p class="upload-subtitle" style="font-size: 0.75rem; margin-top: 8px;">PNG, JPG, SVG (Max 10MB)</p>
             </div>
-            
-            <div class="preview-controls reveal" id="previewControls" style="display: none; margin-bottom: 20px; justify-content: center; gap: 15px;">
-                <span style="font-size: 0.8rem; font-weight: 700; color: var(--muted); text-transform: uppercase;">Aperçu :</span>
+
+            <div class="preview-controls reveal" id="previewControls"
+                style="display: none; margin-bottom: 20px; justify-content: center; gap: 15px;">
+                <span
+                    style="font-size: 0.8rem; font-weight: 700; color: var(--muted); text-transform: uppercase;">Aperçu
+                    :</span>
                 <div class="shape-selector">
                     <button class="shape-btn active" data-shape="original" title="Original">Original</button>
                     <button class="shape-btn" data-shape="round" title="Rond">Rond</button>
                     <button class="shape-btn" data-shape="square" title="Carré">Carré</button>
                 </div>
             </div>
-            
+
             <div class="preview-zone" id="previewZone"></div>
 
             <!-- UPLOAD OPTIONS -->
@@ -511,21 +525,21 @@
                 <div class="trust-item reveal">
                     <div class="trust-icon"><i class="fas fa-truck-fast"></i></div>
                     <div class="trust-text">
-                        <h4>Livraison Rapide</h4>
+                        <h4>Livraison Zwaq</h4>
                         <p>Partout au Maroc en 2–3 jours.</p>
                     </div>
                 </div>
                 <div class="trust-item reveal reveal-delay-1">
                     <div class="trust-icon"><i class="fas fa-hand-holding-dollar"></i></div>
                     <div class="trust-text">
-                        <h4>Paiement à la Livraison</h4>
+                        <h4>Khles Mnin Twsel</h4>
                         <p>Payez cash quand vous recevez.</p>
                     </div>
                 </div>
                 <div class="trust-item reveal reveal-delay-2">
                     <div class="trust-icon"><i class="fas fa-shield-check"></i></div>
                     <div class="trust-text">
-                        <h4>Qualité Premium</h4>
+                        <h4>Qualité Nadi</h4>
                         <p>Vinyle durable & haute résolution.</p>
                     </div>
                 </div>
@@ -535,6 +549,37 @@
                         <h4>Support 7j/7</h4>
                         <p>On répond à toutes vos questions.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════
+         STATS COUNTER
+    ═══════════════════════════ -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-block reveal">
+                    <div class="stat-num" data-target="500">0</div>
+                    <div class="stat-suffix">+</div>
+                    <div class="stat-label">Clients Satisfaits</div>
+                </div>
+                <div class="stat-block reveal reveal-delay-1">
+                    <div class="stat-num" data-target="10000">0</div>
+                    <div class="stat-suffix">+</div>
+                    <div class="stat-label">Stickers Imprimés</div>
+                </div>
+                <div class="stat-block reveal reveal-delay-2">
+                    <div class="stat-num" data-target="50">0</div>
+                    <div class="stat-suffix">+</div>
+                    <div class="stat-label">Villes Livrées</div>
+                </div>
+                <div class="stat-block reveal reveal-delay-3">
+                    <div class="stat-num" data-target="24">0</div>
+                    <div class="stat-suffix">h</div>
+                    <div class="stat-label">Réponse Maximum</div>
                 </div>
             </div>
         </div>
@@ -598,7 +643,8 @@
 
             <div class="about-visual reveal">
                 <div class="about-img-box">
-                    <img src="download (1).png" alt="Your Sticker Maroc">
+                    <img src="src/images/image5.png"
+                        alt="Impression de stickers personnalisés premium - Your Sticker Maroc Atelier">
                 </div>
                 <div class="about-stat-pill">
                     <div class="n">500+</div>
@@ -607,9 +653,9 @@
             </div>
 
             <div class="about-content reveal reveal-delay-2">
-                <div class="eyebrow">Notre histoire</div>
+                <div class="eyebrow">L'Histoire dyalna</div>
                 <h2 class="section-title" style="text-align:left;font-size:clamp(1.8rem,3.5vw,2.8rem)">
-                    Passion pour la <span class="title-accent">Créativité</span> Marocaine
+                    Passion & <span class="title-accent">Meme Culture</span> Marocaine
                 </h2>
                 <p class="about-body">
                     Your Sticker est né d'une passion pour l'expression visuelle. Nous aidons créateurs, entrepreneurs
@@ -628,6 +674,86 @@
                 </ul>
 
                 <a href="#contact" class="btn btn-primary">Nous contacter →</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════
+         FAQ
+    ═══════════════════════════ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-title-wrap reveal">
+                <div class="eyebrow" style="justify-content:center;">FAQ</div>
+                <h2 class="section-title">
+                    Questions <span class="title-accent">Fréquentes</span>
+                    <span class="underline-draw"></span>
+                </h2>
+                <p class="section-sub">Tout ce que vous devez savoir avant de commander.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        <span>Quels formats de fichiers acceptez-vous ?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nous acceptons PNG, JPG, SVG, PDF et AI. Pour un résultat optimal, envoyez vos fichiers en
+                            haute résolution (300 DPI minimum). Si vous n'avez qu'une idée, décrivez-la et notre équipe
+                            créera le design pour vous.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal reveal-delay-1">
+                    <button class="faq-question">
+                        <span>Quel est le délai de livraison ?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>La production prend 1-2 jours ouvrables. La livraison est de 2-3 jours partout au Maroc. Soit
+                            un total de 3-5 jours entre votre commande et la réception.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal reveal-delay-2">
+                    <button class="faq-question">
+                        <span>Quelle est la quantité minimum de commande ?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>La quantité minimum est de 10 stickers. Plus vous commandez, plus le prix unitaire baisse :
+                            -10% à partir de 100 unités et -20% à partir de 250 unités.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal reveal-delay-3">
+                    <button class="faq-question">
+                        <span>Comment fonctionne le paiement ?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nous proposons le paiement à la livraison (cash on delivery) partout au Maroc. Vous ne payez
+                            que lorsque vous recevez vos stickers. Virement bancaire également disponible.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal reveal-delay-4">
+                    <button class="faq-question">
+                        <span>Les stickers sont-ils résistants à l'eau ?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oui ! Tous nos stickers en vinyle sont waterproof, résistants aux UV et à l'usure. Ils durent
+                            jusqu'à 5 ans en extérieur sans se décolorer ni se décoller.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        <span>Puis-je voir un aperçu avant impression ?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolument ! Après réception de votre design, nous vous envoyons un mockup numérique pour
+                            validation. L'impression ne démarre qu'après votre confirmation.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -801,17 +927,20 @@
                     <h5>Newsletter</h5>
                     <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:0;">Offres exclusives
                         et nouveautés en avant-première.</p>
-                    <div class="newsletter-row">
-                        <input type="email" placeholder="votre@email.com" id="newsletterEmail">
-                        <button class="btn btn-primary" style="padding:11px 16px;font-size:0.78rem;"
-                            onclick="document.getElementById('newsletterEmail').value=''">OK</button>
-                    </div>
+                    <form class="newsletter-row" id="newsletterForm">
+                        <input type="hidden" name="access_key" value="82ae3939-9c9e-4372-86c7-678c26933822">
+                        <input type="hidden" name="subject" value="Nouvel abonné Newsletter">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                        <input type="email" name="email" placeholder="votre@email.com" required>
+                        <button type="submit" class="btn btn-primary"
+                            style="padding:11px 16px;font-size:0.78rem;">OK</button>
+                    </form>
                 </div>
 
             </div>
 
             <div class="footer-bottom">
-                <p>© 2025 Your Sticker — Maroc 🇲🇦 — Tous droits réservés.</p>
+                <p>© 2026 Your Sticker — Maroc 🇲🇦 — Tous droits réservés.
                 <div class="footer-chips">
                     <span class="footer-chip"><i class="fas fa-shield-halved"></i> Paiement sécurisé</span>
                     <span class="footer-chip"><i class="fas fa-truck-fast"></i> Livraison rapide</span>
@@ -824,356 +953,39 @@
     <!-- ═══════════════════════════
          JAVASCRIPT
     ═══════════════════════════ -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    <script src="app.js"></script>
+    <script src="upload.js"></script>
+    <script src="watermark.js"></script>
 
-            // ── Cloudinary Config ──
-            const CLOUDINARY_CLOUD_NAME = 'dznktn0es';
-            const CLOUDINARY_UPLOAD_PRESET = 'your_sticker_preset';
+    <!-- ═══════════════════════════
+         CART SIDEBAR
+    ═══════════════════════════ -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Votre Panier</h2>
+            <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <div class="empty-cart">Votre panier est vide.</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total estimé:</span>
+                <span id="cartTotalAmount">0 DH</span>
+            </div>
+            <button class="btn btn-primary btn-checkout" id="checkoutBtn">Commander via WhatsApp</button>
+        </div>
+    </div>
 
-            async function uploadToCloudinary(file) {
-                const url = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
-                const fd = new FormData();
-                fd.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-                fd.append('file', file);
-
-                try {
-                    const response = await fetch(url, { method: 'POST', body: fd });
-                    const data = await response.json();
-                    if (data.secure_url) return data.secure_url;
-                    throw new Error(data.error?.message || 'Upload failed');
-                } catch (err) {
-                    console.error("Cloudinary Error:", err);
-                    return null;
-                }
-            }
-
-            // ── Sticky header ──
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                header.classList.toggle('scrolled', window.scrollY > 30);
-            });
-
-            // ── Mobile menu ──
-            const mobileBtn = document.getElementById('mobileMenuBtn');
-            const nav = document.getElementById('mainNav');
-
-            mobileBtn.addEventListener('click', () => {
-                const open = nav.classList.toggle('active');
-                mobileBtn.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-                document.body.style.overflow = open ? 'hidden' : '';
-            });
-
-            nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-                nav.classList.remove('active');
-                mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                document.body.style.overflow = '';
-            }));
-
-            // ── Scroll reveal ──
-            const reveals = document.querySelectorAll('.reveal');
-            const ro = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
-                });
-            }, { threshold: 0.1 });
-            reveals.forEach(el => ro.observe(el));
-
-            // ── Section title underline on reveal ──
-            document.querySelectorAll('.section-title').forEach(title => {
-                title.classList.add('reveal');
-                ro.observe(title);
-            });
-
-            // ── Button ripple ──
-            document.querySelectorAll('.btn').forEach(btn => {
-                btn.addEventListener('click', e => {
-                    const r = document.createElement('span');
-                    const rect = btn.getBoundingClientRect();
-                    r.className = 'btn-ripple';
-                    r.style.left = (e.clientX - rect.left - 5) + 'px';
-                    r.style.top = (e.clientY - rect.top - 5) + 'px';
-                    btn.appendChild(r);
-                    setTimeout(() => r.remove(), 600);
-                });
-            });
-
-            // ── 3D tilt on cards ──
-            document.querySelectorAll('.category-card, .product-card, .step').forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const dx = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-                    const dy = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-                    card.style.transform = `perspective(900px) rotateX(${dy * -7}deg) rotateY(${dx * 7}deg) scale(1.02)`;
-                });
-                card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-            });
-
-            // ── Sticker hover shadow color ──
-            const stickerColors = ['#FFE500', '#FF2D78', '#FF6B00', '#00D4AA'];
-            document.querySelectorAll('.sticker').forEach((s, i) => {
-                s.addEventListener('mouseenter', () => {
-                    s.style.boxShadow = `6px 6px 0 ${stickerColors[i]}`;
-                    s.style.borderColor = stickerColors[i];
-                });
-                s.addEventListener('mouseleave', () => {
-                    s.style.boxShadow = '';
-                    s.style.borderColor = '';
-                });
-            });
-
-            // ── Add to cart ──
-            document.querySelectorAll('.btn-add').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    btn.innerHTML = '<i class="fas fa-check"></i>';
-                    btn.style.background = '#00D4AA';
-                    btn.style.color = '#080808';
-                    setTimeout(() => {
-                        btn.innerHTML = '<i class="fas fa-plus"></i>';
-                        btn.style.background = '';
-                        btn.style.color = '';
-                    }, 1400);
-                });
-            });
-
-            // ── Contact form ──
-            document.getElementById('contactForm').addEventListener('submit', async e => {
-                e.preventDefault(); // Stop normal redirection
-                const form = e.target;
-                const btn = document.getElementById('submitBtn');
-
-                btn.textContent = 'Envoi en cours...';
-
-                try {
-                    const formData = new FormData(form);
-
-                    // Récupérer les images de la section Processus et les uploader sur Cloudinary
-                    const fileInput = document.getElementById('fileInput');
-                    const imageUrls = [];
-
-                    if (fileInput && fileInput.files.length > 0) {
-                        btn.textContent = 'Upload des images...';
-                        for (let i = 0; i < fileInput.files.length; i++) {
-                            const url = await uploadToCloudinary(fileInput.files[i]);
-                            if (url) imageUrls.push(url);
-                        }
-                    }
-
-                    if (imageUrls.length > 0) {
-                        formData.append('liens_images', imageUrls.join('\n'));
-                    }
-
-                    btn.textContent = 'Envoi du message...';
-
-                    const response = await fetch(form.action, {
-                        method: form.method,
-                        body: formData
-                    });
-
-                    const result = await response.json();
-
-                    if (response.status === 200) {
-                        btn.textContent = '✓ Message envoyé !';
-                        btn.style.background = '#00D4AA';
-                        btn.style.color = '#080808';
-                        btn.style.borderColor = '#00D4AA';
-                        setTimeout(() => {
-                            btn.textContent = 'Envoyer →';
-                            btn.style.cssText = '';
-                            form.reset();
-                            const fInput = document.getElementById('fileInput');
-                            const pZone = document.getElementById('previewZone');
-                            if (fInput) fInput.value = '';
-                            if (pZone) pZone.innerHTML = '';
-                        }, 3000);
-                    } else {
-                        btn.textContent = result.message || 'Erreur. Réessayez.';
-                        btn.style.background = '#ff4d4d';
-                        console.error("Web3Forms Error:", result);
-                        setTimeout(() => {
-                            btn.textContent = 'Envoyer →';
-                            btn.style.cssText = '';
-                        }, 4000);
-                    }
-                } catch (error) {
-                    btn.textContent = 'Erreur de connexion';
-                    console.error("Fetch error:", error);
-                    setTimeout(() => btn.textContent = 'Envoyer →', 3000);
-                }
-            });
-
-            // ── Counter animation ──
-            const statNums = document.querySelectorAll('.stat-number');
-            const so = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    const el = entry.target;
-                    const raw = el.textContent.trim();
-                    const num = parseInt(raw);
-                    if (isNaN(num)) return;
-                    const suffix = raw.replace(num.toString(), '');
-                    let c = 0;
-                    const step = Math.ceil(num / 40);
-                    const t = setInterval(() => {
-                        c = Math.min(c + step, num);
-                        el.textContent = c + suffix;
-                        if (c >= num) clearInterval(t);
-                    }, 35);
-                    so.unobserve(el);
-                });
-            }, { threshold: 0.5 });
-            statNums.forEach(el => so.observe(el));
-
-            // ── Typewriter hero desc ──
-            const heroDesc = document.getElementById('heroDesc');
-            if (heroDesc) {
-                const text = heroDesc.textContent.trim();
-                heroDesc.textContent = '';
-                let i = 0;
-                function type() {
-                    if (i < text.length) { heroDesc.textContent += text[i++]; setTimeout(type, 16); }
-                }
-                setTimeout(type, 800);
-            }
-
-            // ── Price Calculator Logic ──
-            const priceData = {
-                '5x5': 1.38,   // 69 / 50
-                '10x10': 1.98, // 99 / 50
-                '15x15': 2.98, // 149 / 50
-                'custom': 3.5
-            };
-
-            function updatePrice() {
-                const size = document.querySelector('input[name="size"]:checked')?.value || '10x10';
-                const materialMult = parseFloat(document.querySelector('input[name="material"]:checked')?.dataset.mult || 1);
-                const qty = parseInt(document.getElementById('orderQty').value) || 50;
-                
-                let basePrice = priceData[size] || 1.98;
-                let total = basePrice * qty * materialMult;
-
-                // Quantity Discounts
-                if (qty >= 250) total *= 0.8;
-                else if (qty >= 100) total *= 0.9;
-
-                document.getElementById('totalPriceDisplay').textContent = total.toFixed(2) + ' dh';
-            }
-
-            // Listeners for Price
-            document.querySelectorAll('input[name="size"], input[name="material"]').forEach(input => {
-                input.addEventListener('change', updatePrice);
-            });
-
-            const qtyInput = document.getElementById('orderQty');
-            const qtyPlus = document.getElementById('qtyPlus');
-            const qtyMinus = document.getElementById('qtyMinus');
-
-            qtyPlus.addEventListener('click', () => { qtyInput.value = parseInt(qtyInput.value) + 10; updatePrice(); });
-            qtyMinus.addEventListener('click', () => { 
-                if (parseInt(qtyInput.value) > 10) {
-                    qtyInput.value = parseInt(qtyInput.value) - 10; 
-                    updatePrice(); 
-                }
-            });
-            qtyInput.addEventListener('input', updatePrice);
-
-            // Initial price
-            updatePrice();
-
-            // ── Mockup Shape Logic ──
-            let currentShape = 'original';
-            const previewControls = document.getElementById('previewControls');
-            const shapeBtns = document.querySelectorAll('.shape-btn');
-
-            shapeBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    shapeBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentShape = btn.dataset.shape;
-                    
-                    document.querySelectorAll('.preview-item').forEach(item => {
-                        item.classList.remove('original', 'round', 'square');
-                        item.classList.add(currentShape);
-                    });
-                });
-            });
-
-            // ── Upload Zone ──
-            const uploadZone = document.getElementById('uploadZone');
-            const fileInput = document.getElementById('fileInput');
-            const previewZone = document.getElementById('previewZone');
-
-            if (uploadZone && fileInput) {
-                uploadZone.addEventListener('click', () => fileInput.click());
-
-                uploadZone.addEventListener('dragover', (e) => {
-                    e.preventDefault();
-                    uploadZone.classList.add('dragover');
-                });
-
-                uploadZone.addEventListener('dragleave', () => {
-                    uploadZone.classList.remove('dragover');
-                });
-
-                uploadZone.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    uploadZone.classList.remove('dragover');
-                    const files = e.dataTransfer.files;
-                    handleFiles(files);
-                });
-
-                fileInput.addEventListener('change', function () {
-                    handleFiles(this.files);
-                });
-            }
-
-            function handleFiles(files) {
-                if (files.length > 0) previewControls.style.display = 'flex';
-                
-                Array.from(files).forEach(file => {
-                    if (!file.type.startsWith('image/')) return;
-
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        const div = document.createElement('div');
-                        div.className = `preview-item reveal visible ${currentShape}`;
-                        div.innerHTML = `
-                            <img src="${e.target.result}" alt="Preview">
-                            <button class="preview-remove" title="Supprimer"><i class="fas fa-times"></i></button>
-                        `;
-
-                        div.querySelector('.preview-remove').addEventListener('click', function (ev) {
-                            ev.stopPropagation();
-                            div.remove();
-                            if (previewZone.children.length === 0) previewControls.style.display = 'none';
-                        });
-
-                        previewZone.appendChild(div);
-                    };
-                    reader.readAsDataURL(file);
-                });
-            }
-
-            // ── Theme Toggle Logic ──
-            const themeToggle = document.getElementById('themeToggle');
-            const body = document.body;
-
-            // Load saved theme
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
-                body.classList.add('light-mode');
-            }
-
-            themeToggle.addEventListener('click', () => {
-                const isLight = body.classList.toggle('light-mode');
-                localStorage.setItem('theme', isLight ? 'light' : 'dark');
-            });
-
-        });
-    </script>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/212600000000?text=Bonjour%20Your%20Sticker,%20je%20souhaite%20commander%20des%20stickers%20personnalis%C3%A9s." class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
+    <a href="https://wa.me/212600000000?text=Bonjour%20Your%20Sticker,%20je%20souhaite%20commander%20des%20stickers%20personnalis%C3%A9s."
+        class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
         <i class="fab fa-whatsapp"></i>
         <span class="whatsapp-tooltip">Besoin d'aide ?</span>
     </a>

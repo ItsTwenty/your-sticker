@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — Your Sticker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <style>
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════
+         LOGIN OVERLAY
+    ═══════════════════════════ -->
+    <div class="admin-login-overlay" id="loginOverlay">
+        <div class="admin-login-card">
+            <div class="logo" style="justify-content: center; margin-bottom: 30px;">
+                <span class="logo-mark">✦</span>
+                <span class="logo-wordmark">
+                    <span class="logo-wordmark-top">Your</span>
+                    <span class="logo-wordmark-bottom">Sticker</span>
+                </span>
+            </div>
+            <h2>Accès Admin</h2>
+            <div class="admin-error" id="loginError">Identifiants incorrects.</div>
+            <form id="loginForm">
+                <div class="admin-input-group">
+                    <label>Utilisateur</label>
+                    <input type="text" id="username" placeholder="admin" required>
+                </div>
+                <div class="admin-input-group">
+                    <label>Mot de passe</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Connexion</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════
+         DASHBOARD
+    ═══════════════════════════ -->
+    <div class="admin-dashboard" id="adminDashboard">
+        
+        <nav class="admin-nav">
+            <div class="logo">
+                <span class="logo-mark">✦</span>
+                <span class="logo-wordmark">
+                    <span class="logo-wordmark-top">Your</span>
+                    <span class="logo-wordmark-bottom">Sticker</span>
+                </span>
+            </div>
+            <div style="display: flex; gap: 20px; align-items: center;">
+                <span style="font-size: 0.8rem; color: var(--muted);">Connecté en tant qu'<strong>Admin</strong></span>
+                <button class="btn-ghost" id="logoutBtn" style="padding: 8px 16px; font-size: 0.7rem; border-radius: 4px; border: 1px solid var(--gray-2); cursor: pointer; color: var(--white); background: transparent;">Déconnexion</button>
+            </div>
+        </nav>
+
+        <aside class="admin-sidebar">
+            <div class="admin-menu-item active"><i class="fas fa-th-large"></i> Dashboard</div>
+            <div class="admin-menu-item"><i class="fas fa-images"></i> Galerie Photos</div>
+            <div class="admin-menu-item"><i class="fas fa-shopping-bag"></i> Produits</div>
+            <div class="admin-menu-item"><i class="fas fa-cog"></i> Paramètres</div>
+        </aside>
+
+        <main class="admin-main">
+            <!-- ── SECTION: DASHBOARD ── -->
+            <div id="section-dashboard" class="admin-section">
+                <div class="section-title-wrap" style="text-align: left; margin-bottom: 40px;">
+                    <div class="eyebrow">Aperçu</div>
+                    <h2 class="section-title" style="text-align: left; font-size: 2.5rem;">Dashboard <span class="title-accent">Admin</span></h2>
+                </div>
+
+                <div class="admin-card">
+                    <h3><i class="fas fa-upload"></i> Ajouter une nouvelle photo</h3>
+                    <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 25px;">Uploadez une photo sur Cloudinary pour obtenir un lien direct utilisable sur le site.</p>
+                    
+                    <div class="upload-section" id="adminUploadZone" style="border: 2px dashed var(--gray-2); background: var(--black);">
+                        <input type="file" id="adminFileInput" style="display: none;">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3 class="upload-title">Cliquez ou glissez une image</h3>
+                        <p class="upload-subtitle">PNG, JPG ou SVG (Max 10MB)</p>
+                    </div>
+
+                    <div id="uploadStatus" style="margin-top: 20px; font-weight: 700; font-size: 0.9rem;"></div>
+                </div>
+
+                <div class="admin-card">
+                    <h3><i class="fas fa-history"></i> Uploads Récents</h3>
+                    <div class="admin-gallery" id="adminGallery">
+                        <div style="grid-column: 1/-1; text-align: center; color: var(--muted); padding: 40px;">Aucune image uploadée dans cette session.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── SECTION: GALERIE ── -->
+            <div id="section-galerie" class="admin-section hidden">
+                <div class="section-title-wrap" style="text-align: left; margin-bottom: 40px;">
+                    <div class="eyebrow">Médiathèque</div>
+                    <h2 class="section-title" style="text-align: left; font-size: 2.5rem;">Galerie <span class="title-accent">Photos</span></h2>
+                </div>
+                <div class="admin-card">
+                    <p style="color: var(--muted);">Toutes vos photos uploadées apparaîtront ici. Pour l'instant, nous affichons les photos de la session actuelle.</p>
+                    <div class="admin-gallery" id="fullGallery">
+                        <!-- Reusing the same gallery logic for now -->
+                        <div style="grid-column: 1/-1; text-align: center; color: var(--muted); padding: 40px;">Utilisez le Dashboard pour uploader des photos.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── SECTION: PRODUITS ── -->
+            <div id="section-produits" class="admin-section hidden">
+                <div class="section-title-wrap" style="text-align: left; margin-bottom: 40px;">
+                    <div class="eyebrow">E-commerce</div>
+                    <h2 class="section-title" style="text-align: left; font-size: 2.5rem;">Gestion <span class="title-accent">Produits</span></h2>
+                </div>
+                
+                <div class="admin-card">
+                    <h3><i class="fas fa-plus-circle"></i> Ajouter un Produit</h3>
+                    <form id="productForm">
+                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="admin-input-group">
+                                <label>Nom du Produit</label>
+                                <input type="text" id="prodTitle" placeholder="ex: Pack Stickers Cyberpunk" required>
+                            </div>
+                            <div class="admin-input-group">
+                                <label>Image URL (depuis la Galerie)</label>
+                                <input type="text" id="prodImg" placeholder="https://res.cloudinary.com/..." required>
+                            </div>
+                        </div>
+                        <div class="admin-input-group">
+                            <label>Description</label>
+                            <textarea id="prodDesc" style="width: 100%; background: var(--black); border: 1px solid var(--gray-2); padding: 14px; color: var(--white); border-radius: 4px; font-family: inherit; min-height: 100px;" placeholder="Décrivez le produit..." required></textarea>
+                        </div>
+                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px;">
+                            <div class="admin-input-group">
+                                <label>Prix (DH)</label>
+                                <input type="number" id="prodPrice" value="59.00" step="0.01" min="0" required>
+                            </div>
+                            <div class="admin-input-group">
+                                <label>Catégorie</label>
+                                <input type="text" id="prodCategory" placeholder="ex: Anime" value="General">
+                            </div>
+                            <div class="admin-input-group">
+                                <label>Note (Stars 1-5)</label>
+                                <input type="number" id="prodStars" value="5" min="1" max="5">
+                            </div>
+                            <div class="admin-input-group">
+                                <label>Nombre d'avis</label>
+                                <input type="number" id="prodRating" value="50">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter au catalogue</button>
+                    </form>
+                </div>
+
+                <div class="admin-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3><i class="fas fa-list"></i> Catalogue Actuel</h3>
+                        <button class="btn-outline" id="exportBtn" style="padding: 8px 16px; font-size: 0.7rem;">Exporter pour le Site (Code)</button>
+                    </div>
+                    <div id="adminProductList" class="admin-gallery">
+                        <!-- Products will be listed here -->
+                    </div>
+                </div>
+
+                <!-- Export Modal (Simple Alert for now) -->
+                <div id="exportModal" class="admin-login-overlay hidden">
+                    <div class="admin-login-card" style="max-width: 800px;">
+                        <h3>Code à copier</h3>
+                        <p style="color: var(--muted); font-size: 0.8rem; margin-bottom: 20px;">Copiez ce code ووضعوه في ملف <strong>products.js</strong> لتحديث الموقع.</p>
+                        <textarea id="exportCode" style="width: 100%; height: 300px; background: var(--black); color: #00D4AA; font-family: monospace; padding: 15px; border: 1px solid var(--gray-2); border-radius: 4px;"></textarea>
+                        <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+                            <button class="btn btn-primary" id="copyCodeBtn">Copier</button>
+                            <button class="btn-ghost" onclick="document.getElementById('exportModal').classList.add('hidden')">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── SECTION: PARAMÈTRES ── -->
+            <div id="section-parametres" class="admin-section hidden">
+                <div class="section-title-wrap" style="text-align: left; margin-bottom: 40px;">
+                    <div class="eyebrow">Configuration</div>
+                    <h2 class="section-title" style="text-align: left; font-size: 2.5rem;">Paramètres <span class="title-accent">Site</span></h2>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-input-group">
+                        <label>Nom du Site</label>
+                        <input type="text" value="Your Sticker" disabled>
+                    </div>
+                    <div class="admin-input-group">
+                        <label>Email de Notification</label>
+                        <input type="email" value="Hello@yoursticker.ma" disabled>
+                    </div>
+                    <p style="font-size: 0.8rem; color: var(--magenta);">Note : Ces paramètres sont en lecture seule pour le moment.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Products Data -->
+    <script src="products.js"></script>
+
+    <!-- Scripts -->
+    <script src="watermark.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const loginOverlay = document.getElementById('loginOverlay');
+            const adminDashboard = document.getElementById('adminDashboard');
+            const loginForm = document.getElementById('loginForm');
+            const loginError = document.getElementById('loginError');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            // ── SIMPLE LOGIN LOGIC ──
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const u = document.getElementById('username').value;
+                const p = document.getElementById('password').value;
+
+                if (u === 'admin' && p === 'admin123') {
+                    loginOverlay.classList.add('hidden');
+                    adminDashboard.style.display = 'block';
+                    sessionStorage.setItem('admin_logged_in', 'true');
+                    renderAdminProducts(); // Load products after login
+                } else {
+                    loginError.style.display = 'block';
+                }
+            });
+
+            if (sessionStorage.getItem('admin_logged_in') === 'true') {
+                loginOverlay.classList.add('hidden');
+                adminDashboard.style.display = 'block';
+                renderAdminProducts();
+            }
+
+            logoutBtn.addEventListener('click', () => {
+                sessionStorage.removeItem('admin_logged_in');
+                window.location.reload();
+            });
+
+            // ── NAVIGATION LOGIC ──
+            const menuItems = document.querySelectorAll('.admin-menu-item');
+            const sections = document.querySelectorAll('.admin-section');
+
+            menuItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    sections.forEach(s => s.classList.add('hidden'));
+
+                    const targetId = item.textContent.trim().toLowerCase().replace(' ', '-');
+                    if (targetId.includes('dashboard')) document.getElementById('section-dashboard').classList.remove('hidden');
+                    else if (targetId.includes('galerie')) document.getElementById('section-galerie').classList.remove('hidden');
+                    else if (targetId.includes('produits')) document.getElementById('section-produits').classList.remove('hidden');
+                    else if (targetId.includes('paramètres')) document.getElementById('section-parametres').classList.remove('hidden');
+                });
+            });
+
+            // ── PRODUCT MANAGEMENT ──
+            const productForm = document.getElementById('productForm');
+            const adminProductList = document.getElementById('adminProductList');
+            const exportBtn = document.getElementById('exportBtn');
+            const exportModal = document.getElementById('exportModal');
+            const exportCode = document.getElementById('exportCode');
+            const copyCodeBtn = document.getElementById('copyCodeBtn');
+
+            // Load from localStorage if available (for Admin edits), otherwise use PRODUCTS_DATA
+            let localProducts = [];
+            const OLD_TO_NEW = {
+                "ee2f2428-8916-40f6-97e1-75714f8b2790.avif": "src/images/image6.png",
+                "51a6d4da-0452-4d62-a2fd-b521bd7a6b8f.avif": "src/images/image7.png",
+                "983b5174e68e11b2b2bedfb099bfdd21.jpg": "src/images/image8.jpg",
+                "b09be36b777195d5c9e1775b8753e05f.jpg": "src/images/image9.jpg",
+                "naruto_pack.png": "src/images/image10.png",
+                "cyberpunk_pack.png": "src/images/image11.png",
+                "moroccan_pack.png": "src/images/image12.png",
+                "retro_pack.png": "src/images/image13.png"
+            };
+            const saved = localStorage.getItem('your_sticker_products');
+            if (saved) {
+                try {
+                    localProducts = JSON.parse(saved);
+                    localProducts = localProducts.map(prod => {
+                        if (OLD_TO_NEW[prod.img]) {
+                            prod.img = OLD_TO_NEW[prod.img];
+                        }
+                        return prod;
+                    });
+                    localStorage.setItem('your_sticker_products', JSON.stringify(localProducts));
+                } catch (e) {
+                    localProducts = [...PRODUCTS_DATA];
+                }
+            } else {
+                localProducts = [...PRODUCTS_DATA];
+            }
+
+            function saveToLocal() {
+                localStorage.setItem('your_sticker_products', JSON.stringify(localProducts));
+            }
+
+            function renderAdminProducts() {
+                adminProductList.innerHTML = '';
+                localProducts.forEach((prod, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'admin-gallery-item';
+                    item.innerHTML = `
+                        <img src="${prod.img}" alt="${prod.title}">
+                        <div style="padding: 10px; font-size: 0.75rem; font-weight: 700;">${prod.title}</div>
+                        <div class="item-actions">
+                            <div class="action-btn" title="Modifier" onclick="editProduct(${index})"><i class="fas fa-pen"></i></div>
+                            <div class="action-btn delete" title="Supprimer" onclick="deleteProduct(${index})"><i class="fas fa-trash"></i></div>
+                        </div>
+                    `;
+                    adminProductList.appendChild(item);
+                });
+            }
+
+            let editIndex = -1;
+
+            window.editProduct = (index) => {
+                const prod = localProducts[index];
+                editIndex = index;
+                
+                document.getElementById('prodTitle').value = prod.title;
+                document.getElementById('prodImg').value = prod.img;
+                document.getElementById('prodDesc').value = prod.desc;
+                document.getElementById('prodPrice').value = prod.price !== undefined ? prod.price : 59.00;
+                document.getElementById('prodCategory').value = prod.category || 'General';
+                document.getElementById('prodStars').value = prod.stars;
+                document.getElementById('prodRating').value = prod.rating;
+
+                const submitBtn = productForm.querySelector('button[type="submit"]');
+                submitBtn.textContent = 'Enregistrer les modifications';
+                submitBtn.classList.add('editing');
+                
+                // Scroll to form
+                productForm.scrollIntoView({ behavior: 'smooth' });
+            };
+
+            window.deleteProduct = (index) => {
+                if (confirm('Supprimer ce produit ?')) {
+                    localProducts.splice(index, 1);
+                    saveToLocal();
+                    renderAdminProducts();
+                }
+            };
+
+            productForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const prodData = {
+                    id: editIndex > -1 ? localProducts[editIndex].id : Date.now(),
+                    title: document.getElementById('prodTitle').value,
+                    img: document.getElementById('prodImg').value,
+                    desc: document.getElementById('prodDesc').value,
+                    price: parseFloat(document.getElementById('prodPrice').value) || 59.00,
+                    category: document.getElementById('prodCategory').value || 'General',
+                    stars: parseInt(document.getElementById('prodStars').value) || 5,
+                    rating: parseInt(document.getElementById('prodRating').value) || 0
+                };
+
+                if (editIndex > -1) {
+                    localProducts[editIndex] = prodData;
+                    editIndex = -1;
+                    const submitBtn = productForm.querySelector('button[type="submit"]');
+                    submitBtn.textContent = 'Ajouter au catalogue';
+                    submitBtn.classList.remove('editing');
+                    alert('Produit mis à jour !');
+                } else {
+                    localProducts.push(prodData);
+                    alert('Produit ajouté !');
+                }
+
+                saveToLocal();
+                renderAdminProducts();
+                productForm.reset();
+            });
+
+            // Add Reset Button Logic
+            const resetBtn = document.createElement('button');
+            resetBtn.className = 'btn-outline';
+            resetBtn.style.cssText = 'padding: 8px 16px; font-size: 0.7rem; margin-right: 10px; border-color: #FF4D4D; color: #FF4D4D;';
+            resetBtn.textContent = 'Réinitialiser LocalStorage';
+            resetBtn.onclick = () => {
+                if(confirm('Voulez-vous supprimer toutes les modifications locales ?')) {
+                    localStorage.removeItem('your_sticker_products');
+                    window.location.reload();
+                }
+            };
+            exportBtn.parentElement.prepend(resetBtn);
+
+            exportBtn.addEventListener('click', () => {
+                const code = `const PRODUCTS_DATA = ${JSON.stringify(localProducts, null, 4)};`;
+                exportCode.value = code;
+                exportModal.classList.remove('hidden');
+            });
+
+            copyCodeBtn.addEventListener('click', () => {
+                exportCode.select();
+                document.execCommand('copy');
+                alert('Code copié !');
+            });
+
+            // ── CLOUDINARY UPLOAD ──
+            const CLOUDINARY_CLOUD_NAME = 'dznktn0es';
+            const CLOUDINARY_UPLOAD_PRESET = 'your_sticker_preset';
+
+            const uploadZone = document.getElementById('adminUploadZone');
+            const fileInput = document.getElementById('adminFileInput');
+            const status = document.getElementById('uploadStatus');
+            const gallery = document.getElementById('adminGallery');
+            const fullGallery = document.getElementById('fullGallery');
+
+            uploadZone.addEventListener('click', () => fileInput.click());
+
+            fileInput.addEventListener('change', async function() {
+                if (this.files.length === 0) return;
+                
+                status.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Upload en cours...';
+                status.style.color = 'var(--yellow)';
+
+                const file = this.files[0];
+                const url = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
+                const fd = new FormData();
+                fd.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+                fd.append('file', file);
+
+                try {
+                    const response = await fetch(url, { method: 'POST', body: fd });
+                    const data = await response.json();
+                    
+                    if (data.secure_url) {
+                        status.innerHTML = '<i class="fas fa-check"></i> Upload réussi !';
+                        status.style.color = '#00D4AA';
+                        addToGallery(data.secure_url);
+                        
+                        // Auto-fill product image field if on product tab
+                        const prodImgInput = document.getElementById('prodImg');
+                        if (prodImgInput) prodImgInput.value = data.secure_url;
+                    } else {
+                        throw new Error('Upload failed');
+                    }
+                } catch (err) {
+                    status.innerHTML = '<i class="fas fa-times"></i> Erreur lors de l\'upload.';
+                    status.style.color = '#FF4D4D';
+                }
+            });
+
+            function addToGallery(url) {
+                [gallery, fullGallery].forEach(g => {
+                    if (g && (g.children.length === 1 && (g.children[0].textContent.includes('Aucune') || g.children[0].textContent.includes('Utilisez')))) {
+                        g.innerHTML = '';
+                    }
+                });
+
+                const itemHtml = `
+                    <div class="admin-gallery-item">
+                        <img src="${url}" alt="Upload">
+                        <div class="item-actions">
+                            <div class="action-btn" title="Copier le lien" onclick="copyUrl('${url}')"><i class="fas fa-link"></i></div>
+                            <div class="action-btn delete" title="Supprimer" onclick="this.parentElement.parentElement.remove()"><i class="fas fa-trash"></i></div>
+                        </div>
+                    </div>
+                `;
+                
+                if (gallery) gallery.insertAdjacentHTML('afterbegin', itemHtml);
+                if (fullGallery) fullGallery.insertAdjacentHTML('afterbegin', itemHtml);
+            }
+
+            window.copyUrl = (url) => {
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('Lien copié ! Vous pouvez le coller dans le champ "Image URL" du produit.');
+                });
+            };
+        });
+    </script>
+</body>
+</html>

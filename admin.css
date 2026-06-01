@@ -1,0 +1,215 @@
+/* ═══════════════════════════════════
+   ADMIN DASHBOARD — Your Sticker
+   ═══════════════════════════════════ */
+
+.admin-login-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--black);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.admin-login-card {
+    background: var(--gray);
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border: 1px solid var(--gray-2);
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.admin-login-card h2 {
+    margin-bottom: 30px;
+    letter-spacing: -0.02em;
+}
+
+.admin-input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.admin-input-group label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    letter-spacing: 0.1em;
+}
+
+.admin-input-group input,
+.admin-input-group textarea {
+    width: 100%;
+    background: var(--black);
+    border: 1px solid var(--gray-2);
+    padding: 14px;
+    color: var(--white);
+    border-radius: 4px;
+    font-family: inherit;
+    transition: var(--t);
+}
+
+.admin-input-group input:focus,
+.admin-input-group textarea:focus {
+    border-color: var(--yellow);
+    outline: none;
+}
+
+.admin-error {
+    color: #FF4D4D;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    display: none;
+}
+
+.admin-dashboard {
+    display: none;
+    min-height: 100vh;
+    background: var(--black);
+    padding-top: 80px;
+}
+
+.admin-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 70px;
+    background: var(--gray);
+    border-bottom: 1px solid var(--gray-2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 1000;
+}
+
+.admin-sidebar {
+    position: fixed;
+    left: 0; top: 70px; bottom: 0;
+    width: 260px;
+    background: var(--gray);
+    border-right: 1px solid var(--gray-2);
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-main {
+    margin-left: 260px;
+    padding: 40px;
+}
+
+.admin-menu-item {
+    padding: 14px 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 700;
+    transition: var(--t);
+    cursor: pointer;
+}
+
+.admin-menu-item:hover, .admin-menu-item.active {
+    background: rgba(255,255,255,0.03);
+    color: var(--yellow);
+}
+
+.admin-card {
+    background: var(--gray);
+    border: 1px solid var(--gray-2);
+    padding: 30px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+.admin-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.admin-gallery-item {
+    background: var(--black);
+    border: 1px solid var(--gray-2);
+    aspect-ratio: 1;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.admin-gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.admin-gallery-item .item-actions {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0;
+    transition: var(--t);
+}
+
+.admin-gallery-item:hover .item-actions {
+    opacity: 1;
+}
+
+.action-btn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--gray-2);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--t);
+}
+
+.action-btn:hover { background: var(--yellow); color: var(--black); }
+.action-btn.delete:hover { background: #FF4D4D; color: #fff; }
+
+.url-copy-box {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.url-copy-box input {
+    flex: 1;
+    background: var(--black);
+    border: 1px solid var(--gray-2);
+    padding: 10px;
+    color: var(--muted);
+    font-size: 0.75rem;
+    border-radius: 4px;
+}
+
+@media (max-width: 992px) {
+    .admin-sidebar { display: none; }
+    .admin-main { margin-left: 0; }
+}

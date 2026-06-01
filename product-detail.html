@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Sticker — Détail du Produit</title>
+    <meta name="description" content="Stickers personnalisés premium au Maroc. Découvrez nos packs et commandez en ligne.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@700&family=Outfit:wght@200;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --pdp-radius: 12px;
+            --pdp-transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        body {
+            background: #FFFFFF;
+            color: #1D1D1F;
+            padding-top: 68px;
+        }
+
+        /* ── Breadcrumb ── */
+        .pdp-breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 28px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #8E8E93;
+        }
+
+        .pdp-breadcrumb a {
+            color: #8E8E93;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .pdp-breadcrumb a:hover { color: #000; }
+        .pdp-breadcrumb .sep { color: #C7C7CC; font-size: 0.6rem; }
+        .pdp-breadcrumb .current { color: #000; font-weight: 700; }
+
+        /* ── PDP Layout ── */
+        .pdp-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 28px 80px;
+        }
+
+        .pdp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 80px;
+        }
+
+        @media (max-width: 900px) {
+            .pdp-grid { grid-template-columns: 1fr; gap: 32px; }
+        }
+
+        /* ═══════════════════════════
+           GALLERY
+        ═══════════════════════════ */
+        .pdp-gallery {
+            position: sticky;
+            top: 88px;
+        }
+
+        @media (max-width: 900px) {
+            .pdp-gallery { position: relative; top: 0; }
+        }
+
+        .pdp-main-image-wrap {
+            position: relative;
+            background: #F5F5F7;
+            border-radius: var(--pdp-radius);
+            overflow: hidden;
+            cursor: crosshair;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            border: 1px solid #E5E5EA;
+            transition: box-shadow 0.4s ease;
+        }
+
+        .pdp-main-image-wrap:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        .pdp-main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 24px;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
+        }
+
+        .pdp-main-image-wrap:hover .pdp-main-image {
+            transform: scale(1.5);
+        }
+
+        .pdp-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: #000;
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            z-index: 2;
+        }
+
+        .pdp-badge.sale {
+            background: #FF2D78;
+        }
+
+        .pdp-thumbnails {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .pdp-thumbnails::-webkit-scrollbar {
+            height: 3px;
+        }
+
+        .pdp-thumbnails::-webkit-scrollbar-thumb {
+            background: #C7C7CC;
+            border-radius: 10px;
+        }
+
+        .pdp-thumb-item {
+            flex: 0 0 80px;
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: var(--pdp-transition);
+            background: #F5F5F7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+            padding: 8px;
+        }
+
+        .pdp-thumb-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .pdp-thumb-item:hover {
+            border-color: #C7C7CC;
+        }
+
+        .pdp-thumb-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .pdp-thumb-item.active {
+            border-color: #000;
+        }
+
+        /* ═══════════════════════════
+           PRODUCT INFO
+        ═══════════════════════════ */
+        .pdp-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .pdp-category {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #8E8E93;
+        }
+
+        .pdp-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: #000;
+            margin: 0;
+        }
+
+
+
+        .pdp-price-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-top: 1px solid #E5E5EA;
+            border-bottom: 1px solid #E5E5EA;
+        }
+
+        .pdp-price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+
+        .pdp-price-old {
+            font-size: 1.1rem;
+            color: #8E8E93;
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .pdp-price-discount {
+            background: #FF2D78;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .pdp-desc {
+            font-size: 0.92rem;
+            line-height: 1.8;
+            color: #3A3A3C;
+            margin: 0;
+        }
+
+        .pdp-availability {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .pdp-availability .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .pdp-availability .dot.in-stock { background: #30D158; }
+        .pdp-availability .dot.low-stock { background: #FF9F0A; }
+
+        /* ── Specs ── */
+        .pdp-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            border: 1px solid #E5E5EA;
+            border-radius: var(--pdp-radius);
+            overflow: hidden;
+            background: #E5E5EA;
+        }
+
+        .pdp-spec-item {
+            background: #F5F5F7;
+            padding: 14px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .pdp-spec-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #8E8E93;
+        }
+
+        .pdp-spec-value {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* ═══════════════════════════
+           ORDER FORM
+        ═══════════════════════════ */
+        .pdp-order-section {
+            margin-top: 8px;
+        }
+
+        .pdp-order-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .pdp-order-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .pdp-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .pdp-form-row { grid-template-columns: 1fr; }
+        }
+
+        .pdp-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .pdp-form-group label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #8E8E93;
+        }
+
+        .pdp-form-group input,
+        .pdp-form-group select,
+        .pdp-form-group textarea {
+            background: #F5F5F7;
+            border: 1px solid #E5E5EA;
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            color: #000;
+            outline: none;
+            transition: var(--pdp-transition);
+            width: 100%;
+        }
+
+        .pdp-form-group input::placeholder,
+        .pdp-form-group textarea::placeholder {
+            color: #AEAEB2;
+        }
+
+        .pdp-form-group input:focus,
+        .pdp-form-group select:focus,
+        .pdp-form-group textarea:focus {
+            border-color: #000;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+        }
+
+        .pdp-form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .pdp-form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238E8E93' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+        }
+
+        .pdp-qty-selector {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            border: 1px solid #E5E5EA;
+            border-radius: 8px;
+            overflow: hidden;
+            width: fit-content;
+            background: #F5F5F7;
+        }
+
+        .pdp-qty-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: transparent;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #000;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pdp-qty-btn:hover {
+            background: #E5E5EA;
+        }
+
+        .pdp-qty-input {
+            width: 50px;
+            height: 40px;
+            border: none;
+            border-left: 1px solid #E5E5EA;
+            border-right: 1px solid #E5E5EA;
+            background: transparent;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            color: #000;
+            -moz-appearance: textfield;
+        }
+
+        .pdp-qty-input::-webkit-outer-spin-button,
+        .pdp-qty-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* ── CTA Buttons ── */
+        .pdp-cta-row {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .pdp-cta-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 28px;
+            background: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--pdp-transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pdp-cta-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+            transition: opacity 0.3s;
+        }
+
+        .pdp-cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .pdp-cta-primary:active {
+            transform: translateY(0);
+        }
+
+        .pdp-cta-primary i {
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .pdp-cta-primary:hover i {
+            transform: translateX(4px);
+        }
+
+        .pdp-cta-secondary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px 28px;
+            background: transparent;
+            color: #000;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            border: 1px solid #E5E5EA;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--pdp-transition);
+        }
+
+        .pdp-cta-secondary:hover {
+            background: #F5F5F7;
+            border-color: #000;
+        }
+
+        /* ── Mobile Sticky CTA ── */
+        .pdp-mobile-sticky {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-top: 1px solid #E5E5EA;
+            padding: 12px 16px;
+            z-index: 500;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+            animation: slideUpSticky 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes slideUpSticky {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .pdp-mobile-sticky-inner {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pdp-mobile-sticky-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .pdp-mobile-sticky-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #000;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .pdp-mobile-sticky-price {
+            font-size: 0.95rem;
+            font-weight: 900;
+            color: #000;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .pdp-mobile-sticky-btn {
+            flex-shrink: 0;
+            padding: 12px 24px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--pdp-transition);
+            white-space: nowrap;
+        }
+
+        .pdp-mobile-sticky-btn:hover {
+            background: #1D1D1F;
+        }
+
+        @media (max-width: 768px) {
+            .pdp-mobile-sticky { display: block; }
+            .pdp-main { padding-bottom: 100px; }
+            .pdp-cta-primary { display: none; }
+        }
+
+        /* ═══════════════════════════
+           TRUST BAR
+        ═══════════════════════════ */
+        .pdp-trust-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 24px;
+            background: #F5F5F7;
+            border-radius: var(--pdp-radius);
+            border: 1px solid #E5E5EA;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .pdp-trust-bar { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .pdp-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pdp-trust-icon {
+            width: 36px;
+            height: 36px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #000;
+            flex-shrink: 0;
+            border: 1px solid #E5E5EA;
+        }
+
+        .pdp-trust-text {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #3A3A3C;
+            line-height: 1.3;
+        }
+
+        .pdp-trust-text strong {
+            display: block;
+            font-weight: 700;
+            color: #000;
+            font-size: 0.75rem;
+        }
+
+        /* ═══════════════════════════
+           REVIEWS
+        ═══════════════════════════ */
+        .pdp-section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            color: #000;
+            margin-bottom: 28px;
+        }
+
+
+
+        /* ═══════════════════════════
+           RELATED PRODUCTS
+        ═══════════════════════════ */
+        .pdp-related {
+            margin-bottom: 80px;
+            overflow: hidden;
+        }
+
+        .pdp-related-track-wrap {
+            position: relative;
+        }
+
+        .pdp-related-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 8px;
+            scrollbar-width: thin;
+        }
+
+        .pdp-related-track::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .pdp-related-track::-webkit-scrollbar-thumb {
+            background: #C7C7CC;
+            border-radius: 10px;
+        }
+
+        .pdp-related-card {
+            flex: 0 0 220px;
+            scroll-snap-align: start;
+            background: #F5F5F7;
+            border: 1px solid #E5E5EA;
+            border-radius: var(--pdp-radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--pdp-transition);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .pdp-related-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+        }
+
+        .pdp-related-img {
+            aspect-ratio: 1;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .pdp-related-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .pdp-related-card:hover .pdp-related-img img {
+            transform: scale(1.08);
+        }
+
+        .pdp-related-info {
+            padding: 16px;
+        }
+
+        .pdp-related-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .pdp-related-price {
+            font-size: 0.9rem;
+            font-weight: 900;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #000;
+        }
+
+        .pdp-related-arrows {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+            margin-bottom: 16px;
+        }
+
+        .pdp-related-arrow {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid #E5E5EA;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--pdp-transition);
+            font-size: 0.8rem;
+            color: #000;
+        }
+
+        .pdp-related-arrow:hover {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+
+        /* ═══════════════════════════
+           PDP FAQ
+        ═══════════════════════════ */
+        .pdp-faq {
+            margin-bottom: 80px;
+        }
+
+        .pdp-faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .pdp-faq-item {
+            border: 1px solid #E5E5EA;
+            border-radius: var(--pdp-radius);
+            overflow: hidden;
+            transition: var(--pdp-transition);
+        }
+
+        .pdp-faq-item:hover {
+            border-color: #C7C7CC;
+        }
+
+        .pdp-faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+            background: #F5F5F7;
+            border: none;
+            color: #000;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-align: left;
+            gap: 12px;
+            transition: var(--pdp-transition);
+        }
+
+        .pdp-faq-question:hover {
+            background: #E5E5EA;
+        }
+
+        .pdp-faq-icon {
+            font-size: 0.7rem;
+            color: #8E8E93;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .pdp-faq-item.active .pdp-faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .pdp-faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            padding: 0 20px;
+            background: #fff;
+        }
+
+        .pdp-faq-item.active .pdp-faq-answer {
+            max-height: 200px;
+            padding: 0 20px 18px;
+        }
+
+        .pdp-faq-answer p {
+            font-size: 0.85rem;
+            color: #3A3A3C;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* ── Loading / Error ── */
+        .pdp-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            gap: 16px;
+        }
+
+        .pdp-loading i {
+            font-size: 2rem;
+            color: #C7C7CC;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .pdp-loading p {
+            font-size: 0.9rem;
+            color: #8E8E93;
+        }
+
+        .pdp-error {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            gap: 16px;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .pdp-error h2 {
+            font-size: 1.5rem;
+            color: #000;
+        }
+
+        .pdp-error p {
+            color: #8E8E93;
+        }
+
+        .footer-chips i { color: #000; }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════════════
+         HEADER
+    ═══════════════════════════ -->
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <header id="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <span class="logo-mark">✦</span>
+                <span class="logo-wordmark">
+                    <span class="logo-wordmark-top">Your</span>
+                    <span class="logo-wordmark-bottom">Sticker</span>
+                </span>
+            </a>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#products">Shop</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="index.html#contact" class="nav-cta">Commander →</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-icons">
+                <a href="#" class="cart-btn" aria-label="Panier">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════
+         PDP CONTENT
+    ═══════════════════════════ -->
+    <div id="pdpApp">
+        <div class="pdp-loading" id="pdpLoading">
+            <i class="fas fa-circle-notch"></i>
+            <p>Chargement du produit...</p>
+        </div>
+
+        <div class="pdp-error" id="pdpError" style="display:none">
+            <h2>Produit introuvable</h2>
+            <p>Le produit que vous recherchez n'existe pas ou a été retiré.</p>
+            <a href="index.html" class="pdp-cta-primary" style="width:auto;padding:12px 28px;text-decoration:none;">
+                Retour à la boutique
+            </a>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════
+         PDP CONTENT (injected by JS)
+    ═══════════════════════════ -->
+    <div id="pdpContent" style="display:none">
+        <!-- Breadcrumb -->
+        <nav class="pdp-breadcrumb">
+            <a href="index.html">Accueil</a>
+            <span class="sep"><i class="fas fa-chevron-right"></i></span>
+            <a href="index.html#products">Boutique</a>
+            <span class="sep"><i class="fas fa-chevron-right"></i></span>
+            <span class="current" id="pdpBreadcrumbTitle">Produit</span>
+        </nav>
+
+        <main class="pdp-main">
+            <!-- ── Main Grid ── -->
+            <div class="pdp-grid" id="pdpGrid">
+                <!-- Gallery (left) -->
+                <div class="pdp-gallery" id="pdpGallery">
+                    <div class="pdp-main-image-wrap" id="pdpMainImageWrap">
+                        <div class="pdp-badge" id="pdpBadge">Nouveau</div>
+                        <img class="pdp-main-image" id="pdpMainImage" src="" alt="">
+                    </div>
+                    <div class="pdp-thumbnails" id="pdpThumbnails"></div>
+                </div>
+
+                <!-- Info (right) -->
+                <div class="pdp-info">
+                    <div class="pdp-category" id="pdpCategory">Catégorie</div>
+                    <h1 class="pdp-title" id="pdpTitle">Titre</h1>
+
+
+                    <div class="pdp-price-row">
+                        <span class="pdp-price" id="pdpPrice">0.00 DH</span>
+                        <span class="pdp-price-old" id="pdpPriceOld" style="display:none"></span>
+                        <span class="pdp-price-discount" id="pdpDiscountBadge" style="display:none">-10%</span>
+                    </div>
+
+                    <p class="pdp-desc" id="pdpDesc">Description</p>
+
+                    <div class="pdp-availability">
+                        <span class="dot in-stock"></span>
+                        <span id="pdpAvailabilityText">En stock</span>
+                    </div>
+
+                    <!-- Specs -->
+                    <div class="pdp-specs" id="pdpSpecs">
+                        <div class="pdp-spec-item">
+                            <span class="pdp-spec-label">Matériau</span>
+                            <span class="pdp-spec-value">Vinyle Premium</span>
+                        </div>
+                        <div class="pdp-spec-item">
+                            <span class="pdp-spec-label">Taille</span>
+                            <span class="pdp-spec-value">10×10 cm</span>
+                        </div>
+                        <div class="pdp-spec-item">
+                            <span class="pdp-spec-label">Finition</span>
+                            <span class="pdp-spec-value">Brillante</span>
+                        </div>
+                        <div class="pdp-spec-item">
+                            <span class="pdp-spec-label">Durée</span>
+                            <span class="pdp-spec-value">Jusqu'à 5 ans</span>
+                        </div>
+                    </div>
+
+                    <!-- Order Form -->
+                    <div class="pdp-order-section">
+                        <div class="pdp-order-title">Commander</div>
+
+                        <form class="pdp-order-form" id="pdpOrderForm" onsubmit="return handleOrderSubmit(event)">
+                            <div class="pdp-form-row">
+                                <div class="pdp-form-group">
+                                    <label for="pdpName">Nom complet</label>
+                                    <input type="text" id="pdpName" placeholder="Ahmed Ben..." required>
+                                </div>
+                                <div class="pdp-form-group">
+                                    <label for="pdpPhone">Téléphone</label>
+                                    <input type="tel" id="pdpPhone" placeholder="+212 6XX XXX XXX" required>
+                                </div>
+                            </div>
+
+                            <div class="pdp-form-row">
+                                <div class="pdp-form-group">
+                                    <label for="pdpCity">Ville</label>
+                                    <select id="pdpCity" required>
+                                        <option value="" disabled selected>Choisir une ville</option>
+                                        <option value="Casablanca">Casablanca</option>
+                                        <option value="Rabat">Rabat</option>
+                                        <option value="Marrakech">Marrakech</option>
+                                        <option value="Tanger">Tanger</option>
+                                        <option value="Fès">Fès</option>
+                                        <option value="Meknès">Meknès</option>
+                                        <option value="Oujda">Oujda</option>
+                                        <option value="Agadir">Agadir</option>
+                                        <option value="Tétouan">Tétouan</option>
+                                        <option value="Kenitra">Kénitra</option>
+                                        <option value="El Jadida">El Jadida</option>
+                                        <option value="Autre">Autre</option>
+                                    </select>
+                                </div>
+                                <div class="pdp-form-group">
+                                    <label for="pdpQty">Quantité</label>
+                                    <div class="pdp-qty-selector">
+                                        <button type="button" class="pdp-qty-btn" onclick="adjustQty(-1)">−</button>
+                                        <input type="number" class="pdp-qty-input" id="pdpQty" value="1" min="1" max="99">
+                                        <button type="button" class="pdp-qty-btn" onclick="adjustQty(1)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pdp-form-group">
+                                <label for="pdpAddress">Adresse complète</label>
+                                <textarea id="pdpAddress" placeholder="Numéro, rue, quartier, code postal..." required></textarea>
+                            </div>
+
+                            <div class="pdp-form-group">
+                                <label for="pdpNote">Note optionnelle</label>
+                                <textarea id="pdpNote" placeholder="Couleur préférée, instructions spéciales..."></textarea>
+                            </div>
+
+                            <!-- CTA -->
+                            <div class="pdp-cta-row">
+                                <button type="submit" class="pdp-cta-primary" id="pdpOrderBtn">
+                                    <i class="fab fa-whatsapp"></i>
+                                    Commander maintenant
+                                </button>
+                                <button type="button" class="pdp-cta-secondary" onclick="addToCartFromPDP()">
+                                    <i class="fas fa-shopping-bag"></i>
+                                    Ajouter au panier
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Trust Bar -->
+                    <div class="pdp-trust-bar">
+                        <div class="pdp-trust-item">
+                            <div class="pdp-trust-icon"><i class="fas fa-truck-fast"></i></div>
+                            <div class="pdp-trust-text">
+                                <strong>Livraison partout au Maroc</strong>
+                                En 2–3 jours ouvrables
+                            </div>
+                        </div>
+                        <div class="pdp-trust-item">
+                            <div class="pdp-trust-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+                            <div class="pdp-trust-text">
+                                <strong>Paiement à la livraison</strong>
+                                Payez en recevant votre colis
+                            </div>
+                        </div>
+                        <div class="pdp-trust-item">
+                            <div class="pdp-trust-icon"><i class="fas fa-shield-check"></i></div>
+                            <div class="pdp-trust-text">
+                                <strong>Qualité Premium</strong>
+                                Vinyle durable haute résolution
+                            </div>
+                        </div>
+                        <div class="pdp-trust-item">
+                            <div class="pdp-trust-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="pdp-trust-text">
+                                <strong>Expédition rapide</strong>
+                                Sous 24h après commande
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- ── Related Products ── -->
+            <section class="pdp-related" id="pdpRelatedSection">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+                    <h2 class="pdp-section-title" style="margin-bottom:0;">Vous aimerez aussi</h2>
+                    <div class="pdp-related-arrows">
+                        <button class="pdp-related-arrow" id="pdpRelatedPrev" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
+                        <button class="pdp-related-arrow" id="pdpRelatedNext" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pdp-related-track-wrap">
+                    <div class="pdp-related-track" id="pdpRelatedTrack"></div>
+                </div>
+            </section>
+
+            <!-- ── FAQ ── -->
+            <section class="pdp-faq" id="pdpFaqSection">
+                <h2 class="pdp-section-title">Questions fréquentes</h2>
+                <div class="pdp-faq-list">
+                    <div class="pdp-faq-item">
+                        <button class="pdp-faq-question">
+                            <span>Quels sont les délais de livraison ?</span>
+                            <i class="fas fa-chevron-down pdp-faq-icon"></i>
+                        </button>
+                        <div class="pdp-faq-answer">
+                            <p>La livraison prend 2 à 3 jours ouvrables partout au Maroc. La production est assurée sous 24h après confirmation de votre commande.</p>
+                        </div>
+                    </div>
+                    <div class="pdp-faq-item">
+                        <button class="pdp-faq-question">
+                            <span>Comment fonctionne le paiement ?</span>
+                            <i class="fas fa-chevron-down pdp-faq-icon"></i>
+                        </button>
+                        <div class="pdp-faq-answer">
+                            <p>Nous proposons le paiement à la livraison (cash on delivery) partout au Maroc. Vous ne payez que lorsque vous recevez vos stickers.</p>
+                        </div>
+                    </div>
+                    <div class="pdp-faq-item">
+                        <button class="pdp-faq-question">
+                            <span>Puis-je commander en gros ?</span>
+                            <i class="fas fa-chevron-down pdp-faq-icon"></i>
+                        </button>
+                        <div class="pdp-faq-answer">
+                            <p>Oui ! Des réductions sont appliquées à partir de 100 unités (−10%) et 250 unités (−20%). Contactez-nous pour un devis personnalisé.</p>
+                        </div>
+                    </div>
+                    <div class="pdp-faq-item">
+                        <button class="pdp-faq-question">
+                            <span>Les stickers sont-ils waterproof ?</span>
+                            <i class="fas fa-chevron-down pdp-faq-icon"></i>
+                        </button>
+                        <div class="pdp-faq-answer">
+                            <p>Absolument ! Tous nos stickers en vinyle sont résistants à l'eau, aux UV et à l'usure. Ils durent jusqu'à 5 ans en extérieur.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ═══════════════════════════
+         MOBILE STICKY CTA
+    ═══════════════════════════ -->
+    <div class="pdp-mobile-sticky" id="pdpMobileSticky">
+        <div class="pdp-mobile-sticky-inner">
+            <div class="pdp-mobile-sticky-info">
+                <div class="pdp-mobile-sticky-title" id="pdpStickyTitle">Titre</div>
+                <div class="pdp-mobile-sticky-price" id="pdpStickyPrice">0.00 DH</div>
+            </div>
+            <button class="pdp-mobile-sticky-btn" onclick="scrollToOrder()">
+                Commander <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background:#F5F5F7;border-top:2px solid #000;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand footer-col">
+                    <a href="index.html" class="logo">
+                        <span class="logo-mark" style="color:#000!important;">✦</span>
+                        <span class="logo-wordmark">
+                            <span class="logo-wordmark-top" style="color:#8E8E93;">Your</span>
+                            <span class="logo-wordmark-bottom" style="color:#000;">Sticker</span>
+                        </span>
+                    </a>
+                    <p>Votre partenaire marocain pour des autocollants personnalisés de qualité premium.</p>
+                    <div class="contact-social">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Navigation</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="index.html#products">Boutique</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Livraison & Délais</a></li>
+                        <li><a href="#">Paiement</a></li>
+                        <li><a href="#">Confidentialité</a></li>
+                        <li><a href="#">CGU</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Newsletter</h5>
+                    <p style="font-size:0.82rem;color:#8E8E93;line-height:1.7;margin-bottom:0;">Offres exclusives et nouveautés.</p>
+                    <form class="newsletter-row" id="newsletterForm">
+                        <input type="hidden" name="access_key" value="82ae3939-9c9e-4372-86c7-678c26933822">
+                        <input type="hidden" name="subject" value="Nouvel abonné Newsletter">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                        <input type="email" name="email" placeholder="votre@email.com" required>
+                        <button type="submit" class="btn btn-primary" style="padding:11px 16px;font-size:0.78rem;background:#000;color:#fff;border-color:#000;">OK</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Your Sticker — Maroc — Tous droits réservés.</p>
+                <div class="footer-chips">
+                    <span class="footer-chip"><i class="fas fa-shield-halved"></i> Paiement sécurisé</span>
+                    <span class="footer-chip"><i class="fas fa-truck-fast"></i> Livraison rapide</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════
+         CART SIDEBAR
+    ═══════════════════════════ -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Votre Panier</h2>
+            <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <div class="empty-cart">Votre panier est vide.</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total estimé:</span>
+                <span id="cartTotalAmount">0 DH</span>
+            </div>
+            <button class="btn btn-primary btn-checkout" id="checkoutBtn">Commander via WhatsApp</button>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top" aria-label="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/212600000000?text=Bonjour%20Your%20Sticker%2C%20j%27ai%20une%20question%20sur%20un%20produit."
+        class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Besoin d'aide ?</span>
+    </a>
+
+    <!-- Scripts -->
+    <script src="products.js"></script>
+    <script src="app.js"></script>
+    <script src="product-detail.js"></script>
+    <script src="watermark.js"></script>
+</body>
+</html>
