@@ -1650,6 +1650,30 @@ footer {
     .form-row { grid-template-columns: 1fr; }
     .contact-form-box { padding: 24px 18px; }
     .hero-badge-2 { display: none; }
+
+    /* ── SHORTER HERO ON MOBILE ── */
+    .hero {
+        height: 80vh;
+        min-height: 450px;
+    }
+    .hero-content-cinematic {
+        padding: 80px 20px 30px;
+    }
+    .hero-top-meta {
+        margin-bottom: -10px;
+    }
+    .hero-desc-cinematic {
+        font-size: 0.85rem;
+        margin-bottom: 32px;
+        max-width: 320px;
+    }
+    .hero-title-cinematic {
+        font-size: clamp(3rem, 15vw, 5rem);
+        margin-bottom: 16px;
+    }
+    .hero-sticker-group {
+        inset: -5% -5%;
+    }
 }
 
 @media (max-width: 480px) {
