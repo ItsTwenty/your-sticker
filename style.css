@@ -817,9 +817,14 @@ nav a:hover { color: #FFFFFF; background: rgba(255,255,255,0.1); }
     }
     .sy-title {
         font-size: 0.9rem;
+        flex: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
     .sy-desc {
-        font-size: 0.75rem;
+        display: none;
     }
     .sy-btn {
         padding: 10px 12px;
