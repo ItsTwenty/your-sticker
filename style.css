@@ -1664,34 +1664,35 @@ footer .logo-wordmark-top {
     .contact-form-box { padding: 24px 18px; }
     .hero-badge-2 { display: none; }
 
-    /* ── SHORTER HERO ON MOBILE ── */
+    /* ── HERO ON MOBILE ── */
     .hero {
-        height: 50vh;
-        min-height: 350px;
+        height: 100svh;
+        min-height: 550px;
     }
     .hero-content-cinematic {
-        padding: 60px 20px 20px;
+        padding: 90px 20px 30px;
     }
     .hero-top-meta {
-        margin-bottom: -20px;
+        margin-bottom: 0px;
     }
     .hero-bottom-meta {
-        display: none;
+        display: flex;
+        font-size: 0.55rem;
     }
     .hero-desc-cinematic {
-        font-size: 0.8rem;
-        margin-bottom: 24px;
-        max-width: 280px;
+        font-size: 0.85rem;
+        margin-bottom: 32px;
+        max-width: 90%;
     }
     .hero-title-cinematic {
-        font-size: clamp(2.5rem, 12vw, 4rem);
-        margin-bottom: 12px;
+        font-size: clamp(3.2rem, 14vw, 4.5rem);
+        margin-bottom: 16px;
     }
     .hero-sticker-group {
-        inset: 0;
+        inset: -5%;
     }
     .hero-sticker {
-        width: 50px;
+        width: 65px;
     }
 }
 
