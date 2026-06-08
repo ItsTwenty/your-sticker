@@ -153,6 +153,9 @@
          HERO
     ═══════════════════════════ -->
     <section class="hero" id="home">
+        <canvas id="heroCanvas" class="hero-canvas"></canvas>
+        <div class="cursor-glow" id="cursorGlow"></div>
+
         <!-- Video Background -->
         <div class="hero-video-wrapper">
             <video autoplay loop muted playsinline class="hero-video-bg">
@@ -161,7 +164,6 @@
                     type="video/mp4">
             </video>
             <div class="hero-video-overlay"></div>
-            <!-- Technical dot grid overlay -->
             <div class="hero-video-grid"></div>
         </div>
 
@@ -187,16 +189,25 @@
                     </div>
                 </div>
 
-                <h1 class="hero-title-cinematic">
-                    YOUR<br><span class="thin">STICKER</span>
-                </h1>
-                <p class="hero-desc-cinematic" id="heroDesc">
-                    Stick It. Style It.
-                </p>
-                <a href="#custom" class="btn-cinematic-hold" id="enterBtn">
-                    <span class="btn-cinematic-track"></span>
-                    <span class="btn-cinematic-text">DÉCOUVRIR LE PROCESSUS</span>
-                </a>
+                <div class="hero-title-reveal">
+                    <div class="hero-title-inner">
+                        <h1 class="hero-title-cinematic">
+                            YOUR<br><span class="thin">STICKER</span>
+                        </h1>
+                        <div class="hero-light-sweep"></div>
+                    </div>
+                </div>
+                <div class="hero-desc-reveal">
+                    <p class="hero-desc-cinematic" id="heroDesc">
+                        Stick It. Style It.
+                    </p>
+                </div>
+                <div class="hero-btn-reveal">
+                    <a href="#custom" class="btn-cinematic-hold" id="enterBtn">
+                        <span class="btn-cinematic-track"></span>
+                        <span class="btn-cinematic-text">DÉCOUVRIR LE PROCESSUS</span>
+                    </a>
+                </div>
             </div>
 
             <div class="hero-bottom-meta">
@@ -947,6 +958,7 @@
     <script src="app.js"></script>
     <script src="upload.js"></script>
     <script src="watermark.js"></script>
+    <script src="hero-effects.js"></script>
 
     <!-- ═══════════════════════════
          CART SIDEBAR
