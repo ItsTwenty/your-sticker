@@ -254,6 +254,9 @@ header.scrolled {
     text-transform: uppercase;
 }
 
+.logo-img-link { display: flex; align-items: center; }
+.logo-img { height: 64px; width: auto; display: block; }
+
 /* keep old refs unused but harmless */
 .logo-text-main { color: var(--white); }
 .logo-text-accent { color: var(--yellow); }

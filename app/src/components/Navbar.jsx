@@ -18,12 +18,8 @@ export default function Navbar({ menuOpen, onToggleMenu, cartCount = 0 }) {
   return (
     <header className="fixed top-0 left-0 right-0 z-30 bg-white/80 backdrop-blur-lg border-b border-gray-100/80">
       <div className="flex items-center justify-between h-14 px-5 max-w-7xl mx-auto">
-        <a href="#" className="flex items-center gap-2.5">
-          <span className="text-lg">✦</span>
-          <div className="flex flex-col leading-tight">
-            <span className="text-[0.5rem] font-semibold tracking-[0.25em] text-gray-400 uppercase">Your</span>
-            <span className="text-xs font-extrabold tracking-tight text-black uppercase">Sticker</span>
-          </div>
+        <a href="#" className="flex items-center">
+          <img src="/logo.png" alt="Your Sticker" className="h-8 w-auto" />
         </a>
 
         <div className="flex items-center gap-3">
