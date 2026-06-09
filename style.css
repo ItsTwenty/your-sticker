@@ -388,7 +388,8 @@ nav a:hover { color: #FFFFFF; background: rgba(255,255,255,0.1); }
 .hero-video-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, transparent 0%, rgba(255,255,255,0.95) 100%);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(2px);
     z-index: 1;
 }
 
@@ -471,7 +472,33 @@ nav a:hover { color: #FFFFFF; background: rgba(255,255,255,0.1); }
     height: auto;
     filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
     opacity: 0.9;
-    will-change: transform;
+    user-select: none;
+    -webkit-user-drag: none;
+    transition: filter 0.3s ease;
+}
+
+.hero-sticker::after {
+    content: '👋 Peel Me!';
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: #ffffff;
+    color: #000000;
+    font-size: 0.65rem;
+    font-weight: 900;
+    padding: 2px 8px;
+    border-radius: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    white-space: nowrap;
+}
+
+.hero-sticker:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
 }
 
 .hero-sticker img {
